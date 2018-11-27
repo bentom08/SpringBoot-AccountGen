@@ -12,10 +12,10 @@ public abstract class AbstractAccountGen {
 
     public abstract String getGeneratedNumber();
 
-    protected String generateAccountNumber(int accoutnSize){
-        String num = constructString(1);
+    protected String generateAccountNumber(int accountSize){
+        String num = constructString(accountSize);
         while(accountNumList.contains(num)){
-            num = constructString(1);
+            num = constructString(accountSize);
         }
         accountNumList.add(num);
         return num;

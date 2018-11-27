@@ -25,7 +25,12 @@ public class AccountServiceImpl implements AccountService {
 		accountCreator = new CreateAccount(new SixAccountGen() );
 		accountCreator.getGenerator().setAccountNumList(allAccountNums);
 		
-		return accountCreator.createAccount();
+		String generatedNum = accountCreator.createAccount();
+		
+		repo.save(new AccountNum(generatedNum));
+		
+		return generatedNum;
+		
 	}
 	private List<String> getAccountNumArray() {
 		List<AccountNum> objectList = repo.findAll();
